@@ -1,11 +1,12 @@
 import express from "express";
-import { loginController, signupController } from "../../controllers/authController";
+import { home, signUp, login } from "../controllers/authController";
+import { verifyToken } from "../middlewares/verification";
 
 const router = express.Router()
 
 
-router.post('/login', loginController )
-router.post('/signup', signupController)
-
+router.post('/login', login )
+router.post('/signup', signUp)
+router.post('/home', verifyToken, home )
 
 export default router
